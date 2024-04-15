@@ -1,5 +1,5 @@
 # Quiz 059
-<img width="1046" alt="Screenshot 2024-04-14 at 6 20 28 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/72b049db-8abe-4d47-bf68-6faf3962c429">
+<img width="max" alt="Screenshot 2024-04-14 at 6 20 28 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/72b049db-8abe-4d47-bf68-6faf3962c429">
 
 ## ① Outline the need for a translation process from high level language to machine code. 
 
