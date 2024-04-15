@@ -1,6 +1,6 @@
 # Quiz 061
 
-<img width="1046" alt="Screenshot 2024-04-15 at 9 44 19 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/87161ec8-210a-4b0e-b274-e7c7ff067d6b">
+<img width="max" alt="Screenshot 2024-04-15 at 9 44 19 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/87161ec8-210a-4b0e-b274-e7c7ff067d6b">
 
 ## Describe the use of beta testing. 
 
