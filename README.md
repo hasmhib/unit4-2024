@@ -1,7 +1,7 @@
 # Unit 4: A mini Reddit
 
 
-# Criteria C: Development
+# Criteria C: Development (no more than 1500 words)
 
 ## Technique Used
 1. Flask Library/Routes
