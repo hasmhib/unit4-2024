@@ -17,7 +17,7 @@
 
 ## Sources
 
-## Login System
+### Login System
 
 My client required a login system for the application so that different users could have their unique profile pages and post comments. I initially decided to use cookies as a way of storing when a user is logged in. The code below shows my first attempt and I will explain it in detail below:
 
