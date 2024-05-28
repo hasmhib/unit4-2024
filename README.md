@@ -31,11 +31,14 @@ def login():
         uname = request.form.get('uname')
         psw = request.form.get('psw')
         db = DatabaseBridge('user.db')
-        r = db.search(f"""SELECT * from user where uname == '{uname}' and psw == '{psw}'""")
-        if r[1] == {uname} and r[2] == {psw}:
-            response = make_response(redirect(url_for('profile')))
-            response.set_cookie('user_id', r[0])
+        user = db.search(f"SELECT * from user where uname == '{uname}'", multiple=False)
+        db.close()
+        if user and check_hash(user[2], psw):　
+            response = make_response(redirect(url_for('main')))
+            response.set_cookie('user_id', str(user[0]))
             return response
+        else:
+            return redirect(url_for('login', message='Login failed'))
 ```
 This code is run when the request from the client received by the server is of type POST ```request.method == "POST"```. This happens when the user clicks on the login button on the index.html page. Then, I proceed to get the variables from the login form including the name and password, this is contained in the dictionary “request”. After checking the database with the SQL query ##(“””(“””))... Then I set the cookie for the user with the code ``` response.set_cookie('user_id', r[0]) ```, and noted that the cookie is like a dictionary with keys and values in both strings.
 
