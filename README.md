@@ -14,6 +14,10 @@
 8. Interacting with Databases
 9. Arrays and Lists
 10. Text Formatting
+11. HTTP server
+12. POST, GET Request
+13. SQLite databases
+
 
 ## Sources
 
@@ -46,7 +50,21 @@ However, based on my research about cookies and testing in the browser, I found 
 
 # Criteria E: Evaluation
 
-## FUnctionality test
+## Functionality test
+
+
+
+# Appendix
+
+<img width="max" alt="Screenshot 2024-05-28 at 10 02 03 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/f0d455f7-367a-4339-82de-d3323797cb01">
+_**Appendix.** Contact between developer and peer for evaluation of website_
+
+
+<img width="max" alt="Screenshot 2024-05-28 at 10 02 33 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/c46b46fb-ed14-4a6a-9457-a05a3716c1ca">
+_**Appendix.** Contact between developer and peer for evaluation of website_
+
+
+
 
 
 [^1]: https://www.geeksforgeeks.org/how-to-use-flask-session-in-python-flask/
