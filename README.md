@@ -42,7 +42,7 @@ def login():
 ```
 This code is run when the request from the client received by the server is of type POST ```request.method == "POST"```. This happens when the user clicks on the login button on the index.html page. Then, I proceed to get the variables from the login form including the name and password, this is contained in the dictionary “request”. After checking the database with the SQL query ##(“””(“””))... Then I set the cookie for the user with the code ``` response.set_cookie('user_id', r[0]) ```, and noted that the cookie is like a dictionary with keys and values in both strings.
 
-However, based on my research about cookies and testing in the browser, I found out that the cookie is not a secure way of storing the user information since this is a variable stored in the browser on the client side, which can be easily changed causing identity thief if not hashed. So my solution to this issue was to change from client to server side by using sessions. The code below shows that I could store the current user in the dictionary session, "The data is required to be saved in the Session is stored in a temporary directory on the server". "The data in the Session is stored on the top of the cooclies and signed by the server cryptography". [^1]
+However, based on my research about cookies and testing in the browser, I found out that the cookie is not a secure way of storing the user information since this is a variable stored in the browser on the client side, which can be easily changed causing identity thief if not hashed. So my solution to this issue was to change from client to server side by using sessions. The code below shows that I could store the current user in the dictionary session, "The data is required to be saved in the Session is stored in a temporary directory on the server". "The data in the Session is stored on the top of the cookies and signed by the server cryptography". [^1]
 
 
 
@@ -65,17 +65,19 @@ My peer is very satisfied with the website, as detailed in Appendix 2 and Append
 
 # Appendix
 
-<img width="max" alt="Screenshot 2024-05-28 at 10 02 03 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/f0d455f7-367a-4339-82de-d3323797cb01">
+<img width="max" alt="Screenshot 2024-05-28 at 1 55 53 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/be290c05-58db-47e2-b748-f28108ca5ae1">
 
-##### _Appendix. Contact between developer and client for evaluation of website_
+##### _Appendix.2 Contact between developer and client for evaluation of website_
 
-
-<img width="max" alt="Screenshot 2024-05-28 at 10 02 33 AM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/c46b46fb-ed14-4a6a-9457-a05a3716c1ca">
-
-##### _Appendix. Contact between developer and client for evaluation of website_
+<img width="max" alt="Screenshot 2024-05-28 at 1 56 27 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/5c23a7f1-cdcb-4d60-a2f6-1fd4e1a00813">
 
 
+##### _Appendix.3 Contact between developer and client for evaluation of website_
 
+<img width="max" alt="Screenshot 2024-05-28 at 1 56 13 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/d5995505-fa6a-4ff4-8bdd-d5c01fabcaf3">
+
+
+##### _Appendix.4 Contact between developer and client regarding beta testing and feedback_
 
 
 [^1]: https://www.geeksforgeeks.org/how-to-use-flask-session-in-python-flask/
