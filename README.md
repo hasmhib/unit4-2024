@@ -11,12 +11,10 @@
 5. if statements
 6. Password Hashing
 7. Token-based authentication
-8. Interacting with Databases
-9. Arrays and Lists
-10. Text Formatting
-11. HTTP server
-12. POST, GET Request
-13. SQLite databases
+8. Arrays and Lists
+9. HTTP server
+10. POST, GET Request
+11. SQLite databases
 
 
 ## Sources
@@ -26,7 +24,11 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
 
 ### User profile picture
 
+
 ```.py
+app.config['UPLOAD_FOLDER'] = 'static/profile_pics'
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
+
 def save_profile_pic(file):
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
@@ -35,61 +37,35 @@ def save_profile_pic(file):
     return None
 
 ```
-The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is performed by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is essential to prevent security issues that could arise from malicious filenames, such as those containing special characters or directory traversal sequences. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles.
+
+The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is performed by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. The reason why I choose to user ```app.config``` is that it allows for centralized configuration management within the Flask application. By storing the allowed file extensions and the upload folder path in app.config, it becomes easier to manage and modify these settings in one place, ensuring consistency throughout the application. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is essential to prevent security issues that could arise from malicious filenames, such as those containing special characters or directory traversal sequences. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles.
 
 
 ### User profile information
 
+These SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain in deatail. 
+
 ```.py
 user = db.search(f"SELECT * FROM user WHERE id={user_id}", multiple=False)
+
 following = db.search(f"SELECT * FROM follows WHERE follower_id={current_user_id} AND followed_id={user_id}", multiple=False) is not None
 review_count = db.search(f"SELECT COUNT(*) FROM reviews WHERE user_id={user_id}", multiple=False)[0]
 
-like_count = db.search(f"""
-    SELECT COUNT(*)
-    FROM likes l
-    JOIN reviews r ON l.review_id = r.id
-    WHERE r.user_id={user_id}
-""", multiple=False)[0]
+like_count = db.search(f"""SELECT COUNT(*) FROM likes l JOIN reviews r ON l.review_id = r.id WHERE r.user_id={user_id}""", multiple=False)[0]
 
 follower_count = db.search(f"SELECT COUNT(*) FROM follows WHERE followed_id={user_id}", multiple=False)[0]
 following_count = db.search(f"SELECT COUNT(*) FROM follows WHERE follower_id={user_id}", multiple=False)[0]
 ```
 
+The first query retrieves all information about the user from the ```user``` table based on their ```user_id```, including details like the username, email, and profile picture. 
 
-### Login method
+The second query checks if the current user (the one logged in) is following the user whose profile is being viewed. This is done by looking for a record in the ```follows``` table where the ```follower_id``` is the current user's ID and the ```followed_id``` is the profile user's ID. If such a record exists, it means the current user is following the profile user.
 
-My client required a login system for the application so that different users could have their unique profile pages and post comments. I initially decided to use cookies as a way of storing when a user is logged in. The code below shows my first attempt and I will explain it in detail below:
+The third query counts the number of ```reviews``` posted by the user by selecting the count of rows in the reviews table where the ```user_id``` matches the profile user's ID. This is achieved using the ```COUNT(*)``` function, an built-in function in SQL that returns the number of rows that match the specified criteria. In this case, it returns the number of reviews that the user has posted. 
 
-```.py
-    if request.method == "POST":
-        uname = request.form.get('uname')
-        psw = request.form.get('psw')
-        db = DatabaseBridge('user.db')
-        user = db.search(f"SELECT * from user where uname == '{uname}'", multiple=False)
-        db.close()
-        if user and check_hash(user[2], psw):　
-            response = make_response(redirect(url_for('main')))
-            response.set_cookie('user_id', str(user[0]))
-            return response
-        else:
-            return redirect(url_for('login', message='Login failed'))
-```
+The fourth query counts the number of ```likes``` received on the user's reviews by joining the ```likes``` and ```reviews``` tables. It selects the count of rows in the likes table where the ```review_id``` matches a review ID from the ```reviews``` table, which in turn matches the profile user's ID. The ```JOIN``` method is used to combine rows from two or more tables based on a related column between them.
 
-This code is run when the request from the client received by the server is of type POST ```request.method == "POST"```. This happens when the user clicks on the login button on the login.html page. Then, I proceed to get the variables from the login form including the name and password, this is contained in the dictionary “request”. After checking the database with the SQL query ##(“””(“””))... Then I set the cookie for the user with the code ``` response.set_cookie('user_id', r[0]) ```, and noted that the cookie is like a dictionary with keys and values in both strings.
-
-However, based on my research about cookies and testing in the browser, I found out that the cookie is not a secure way of storing the user information since this is a variable stored in the browser on the client side, which can be easily changed causing identity thief if not hashed. So my solution to this issue was to change from client to server side by using sessions. The code below shows that I could store the current user in the dictionary session, "The data is required to be saved in the Session is stored in a temporary directory on the server". "The data in the Session is stored on the top of the cookies and signed by the server cryptography". [^1]
-
-```.py
-session['current_user'] = users[username]
-return redirect(url_for('profile'))
-```
-In order to use the session variable I needed to define an initial secret in the variable of the Flask application, I did this in the code below and generated a random string as secure key. 
-
-```.py
-app = Flask(__name__)
-app.secret_key = "randomtextwithnumbers1234567"
-```
+The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
 
 
 ### SQL Query for Review likes
@@ -105,7 +81,8 @@ revs = db.search(query=f"""
     GROUP BY r.id
 """, multiple=True)
 ```
-The SQL query used to retrieve reviews for a specific movie, along with the number of likes each review has received and whether the current user liked each review, is designed to display detailed information about movie reviews and user interactions. The query selects various columns from the ```reviews``` table, including review details such as the review ID, date, stars, comment, and movie ID, as well as user details like the user ID and username. The ```COUNT()``` function is used to count the number of likes each review has received. The ```JOIN``` clause combines rows from the ```reviews``` table with the ```user``` table to get the username of the reviewer and with the ```likes``` table to count the number of likes for each review.
+
+The SQL Query used to retrieve reviews for a specific movie, corresponding with the number of likes each review has received and whether the current user liked each review, is designed to display detailed information about both movie and book reviews and user interactions. The query selects columns from the ```reviews``` table, including review details such as the review ID, date, stars, comment, and movie ID, as well as user details like the user ID and username. The ```COUNT()``` function is used to count the number of likes each review has received. The ```JOIN``` clause combines rows from the ```reviews``` table with the ```user``` table to get the username of the reviewer and with the ```likes``` table to count the number of likes for each review.
 
 The query includes a subquery to check if the current user has liked each review. This subquery returns ```1``` if the current user liked the review; otherwise, it returns ```NULL```. This check is performed by selecting from the ```likes``` table where the ```review_id``` matches the review ID and the ```user_id``` matches the current user's ID. The query filters reviews by the specified movie ID using the ```WHERE``` clause and groups the results by the review ID using the ```GROUP BY``` clause to ensure correct aggregation of likes. This comprehensive view of movie reviews, including user engagement metrics, enhances the user experience by showing interactive and relevant content.
 
