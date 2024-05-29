@@ -24,7 +24,7 @@
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database 
 
 
-### Login System
+### User profile picture
 
 ```.py
 def save_profile_pic(file):
@@ -63,6 +63,9 @@ follower_count = db.search(f"SELECT COUNT(*) FROM follows WHERE followed_id={use
 following_count = db.search(f"SELECT COUNT(*) FROM follows WHERE follower_id={user_id}", multiple=False)[0]
 
 ```
+
+
+### Login method
 
 My client required a login system for the application so that different users could have their unique profile pages and post comments. I initially decided to use cookies as a way of storing when a user is logged in. The code below shows my first attempt and I will explain it in detail below:
 
