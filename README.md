@@ -22,7 +22,7 @@
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database 
 
 
-### User profile picture
+## User profile picture
 
 
 ```.py
@@ -41,7 +41,7 @@ def save_profile_pic(file):
 The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is performed by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. The reason why I choose to user ```app.config``` is that it allows for centralized configuration management within the Flask application. By storing the allowed file extensions and the upload folder path in app.config, it becomes easier to manage and modify these settings in one place, ensuring consistency throughout the application. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is essential to prevent security issues that could arise from malicious filenames, such as those containing special characters or directory traversal sequences. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles.
 
 
-### User profile information
+## User profile information
 
 These SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain in detail. 
 
@@ -70,7 +70,7 @@ The fifth query counts how many users are following the profile user by selectin
 These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
 
 
-### SQL Query for Review likes
+## SQL Query for Review likes
 
 ```.py
 revs = db.search(query=f"""
