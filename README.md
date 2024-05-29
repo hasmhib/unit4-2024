@@ -38,6 +38,8 @@ def save_profile_pic(file):
 The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is performed by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is essential to prevent security issues that could arise from malicious filenames, such as those containing special characters or directory traversal sequences. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles.
 
 
+### User profile information
+
 ```.py
 # Get user information
 user = db.search(f"SELECT * FROM user WHERE id={user_id}", multiple=False)
@@ -89,6 +91,7 @@ This code is run when the request from the client received by the server is of t
 However, based on my research about cookies and testing in the browser, I found out that the cookie is not a secure way of storing the user information since this is a variable stored in the browser on the client side, which can be easily changed causing identity thief if not hashed. So my solution to this issue was to change from client to server side by using sessions. The code below shows that I could store the current user in the dictionary session, "The data is required to be saved in the Session is stored in a temporary directory on the server". "The data in the Session is stored on the top of the cookies and signed by the server cryptography". [^1]
 
 
+### SQL Query for Review likes
 
 ```.py
 revs = db.search(query=f"""
