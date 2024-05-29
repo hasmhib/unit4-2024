@@ -65,7 +65,9 @@ The third query counts the number of reviews posted by the user by selecting the
 
 The fourth query counts the number of likes received on the user's reviews by joining the ```likes``` and ```reviews``` tables. It selects the count of rows in the likes table where the ```review_id``` matches a review ID from the ```reviews``` table, which in turn matches the profile user's ID. The ```JOIN``` method is used to combine rows from two or more tables based on a related column between them.
 
-The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
+The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. 
+
+These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
 
 
 ### SQL Query for Review likes
