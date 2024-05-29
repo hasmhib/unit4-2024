@@ -43,7 +43,7 @@ The function ```save_profile_pic``` is designed to handle the upload and saving 
 
 ### User profile information
 
-These SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain in deatail. 
+These SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain in detail. 
 
 ```.py
 user = db.search(f"SELECT * FROM user WHERE id={user_id}", multiple=False)
