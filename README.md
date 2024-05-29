@@ -41,16 +41,10 @@ The function ```save_profile_pic``` is designed to handle the upload and saving 
 ### User profile information
 
 ```.py
-# Get user information
 user = db.search(f"SELECT * FROM user WHERE id={user_id}", multiple=False)
-
-# Check if the current user is following this user
 following = db.search(f"SELECT * FROM follows WHERE follower_id={current_user_id} AND followed_id={user_id}", multiple=False) is not None
-
-# Get the number of reviews posted by the user
 review_count = db.search(f"SELECT COUNT(*) FROM reviews WHERE user_id={user_id}", multiple=False)[0]
 
-# Get the number of likes received by the user on their reviews
 like_count = db.search(f"""
     SELECT COUNT(*)
     FROM likes l
@@ -58,12 +52,8 @@ like_count = db.search(f"""
     WHERE r.user_id={user_id}
 """, multiple=False)[0]
 
-# Get the number of followers
 follower_count = db.search(f"SELECT COUNT(*) FROM follows WHERE followed_id={user_id}", multiple=False)[0]
-
-# Get the number of users the user is following
 following_count = db.search(f"SELECT COUNT(*) FROM follows WHERE follower_id={user_id}", multiple=False)[0]
-
 ```
 
 
@@ -90,6 +80,17 @@ This code is run when the request from the client received by the server is of t
 
 However, based on my research about cookies and testing in the browser, I found out that the cookie is not a secure way of storing the user information since this is a variable stored in the browser on the client side, which can be easily changed causing identity thief if not hashed. So my solution to this issue was to change from client to server side by using sessions. The code below shows that I could store the current user in the dictionary session, "The data is required to be saved in the Session is stored in a temporary directory on the server". "The data in the Session is stored on the top of the cookies and signed by the server cryptography". [^1]
 
+```.py
+session['current_user'] = users[username]
+return redirect(url_for('profile'))
+```
+In order to use the session variable I needed to define an initial secret in the variable of the Flask application, I did this in the code below and generated a random string as secure key. 
+
+```.py
+app = Flask(__name__)
+app.secret_key = "randomtextwithnumbers1234567"
+```
+
 
 ### SQL Query for Review likes
 
@@ -104,8 +105,9 @@ revs = db.search(query=f"""
     GROUP BY r.id
 """, multiple=True)
 ```
+The SQL query used to retrieve reviews for a specific movie, along with the number of likes each review has received and whether the current user liked each review, is designed to display detailed information about movie reviews and user interactions. The query selects various columns from the ```reviews``` table, including review details such as the review ID, date, stars, comment, and movie ID, as well as user details like the user ID and username. The ```COUNT()``` function is used to count the number of likes each review has received. The ```JOIN``` clause combines rows from the ```reviews``` table with the ```user``` table to get the username of the reviewer and with the ```likes``` table to count the number of likes for each review.
 
-
+The query includes a subquery to check if the current user has liked each review. This subquery returns ```1``` if the current user liked the review; otherwise, it returns ```NULL```. This check is performed by selecting from the ```likes``` table where the ```review_id``` matches the review ID and the ```user_id``` matches the current user's ID. The query filters reviews by the specified movie ID using the ```WHERE``` clause and groups the results by the review ID using the ```GROUP BY``` clause to ensure correct aggregation of likes. This comprehensive view of movie reviews, including user engagement metrics, enhances the user experience by showing interactive and relevant content.
 
 
 # Criteria D: Functionlaity
