@@ -33,7 +33,21 @@
 
 ## Sources
 
-https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database 
+### Bootstrap 5 Documentation [^1]
+
+
+### W3Schools documentations for SQL [^2]
+
+
+### Jinja — Jinja Documentation (3.1.x) [^3]
+
+
+### “Werkzeug.” PyPI [^4]
+
+
+### Os — Miscellaneous Operating System Interfaces.” Python Documentation [^5]
+
+
 
 
 ## User profile picture
@@ -180,5 +194,10 @@ My peer is very satisfied with the website, as detailed in Appendix 1 and Append
 ##### _Figure.4 Contact between developer and client regarding beta testing and feedback_
 
 
-[^1]: https://www.geeksforgeeks.org/how-to-use-flask-session-in-python-flask/
+
+[^1]: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+[^2]: https://www.w3schools.com/sql/
+[^3]: https://jinja.palletsprojects.com/en/3.1.x
+[^4]: https://pypi.org/project/Werkzeug
+[^5]: https://docs.python.org/3/library/os.html
 
