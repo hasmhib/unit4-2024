@@ -1,7 +1,21 @@
 # Unit 4: A mini Reddit
 
 
+
 # Criteria C: Development (no more than 1500 words)
+
+## Existing Tools
+
+| Software/Development tools | Coding structure tools        | Libraries      |
+|----------------------------|-------------------------------|----------------|
+| PyCharm                    | ORM (Object Relation Mapping) | flask          |
+| Python                     | SQL requests                  | sqlite3        |
+| SQLite                     | Databases                     | passlib        |
+| Jinja2                     | Encryption                    | werkzeug.utils |
+|                            | For loops                     | os             |
+|                            | If-else statements            | datetime       |
+
+
 
 ## Technique Used
 1. Flask Library/Routes
@@ -11,7 +25,7 @@
 5. if statements
 6. Password Hashing
 7. Token-based authentication
-8. Arrays and Lists
+8. Lists
 9. HTTP server
 10. POST, GET Request
 11. SQLite databases
@@ -58,19 +72,17 @@ following_count = db.search(f"SELECT COUNT(*) FROM follows WHERE follower_id={us
 ```
 
 The first query retrieves all information about the user from the ```user``` table based on their ```user_id```, including details like the username, email, and profile picture. 
-
 The second query checks if the current user (the one logged in) is following the user whose profile is being viewed. This is done by looking for a record in the ```follows``` table where the ```follower_id``` is the current user's ID and the ```followed_id``` is the profile user's ID. If such a record exists, it means the current user is following the profile user.
-
 The third query counts the number of reviews posted by the user by selecting the count of rows in the ```reviews``` table where the ```user_id``` matches the profile user's ID. This is achieved using the ```COUNT(*)``` function, an built-in function in SQL that returns the number of rows that match the specified criteria. In this case, it returns the number of reviews that the user has posted. 
-
 The fourth query counts the number of likes received on the user's reviews by joining the ```likes``` and ```reviews``` tables. It selects the count of rows in the likes table where the ```review_id``` matches a review ID from the ```reviews``` table, which in turn matches the profile user's ID. The ```JOIN``` method is used to combine rows from two or more tables based on a related column between them.
-
 The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. 
 
 These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
 
 
 ## SQL Query for Review likes
+
+The 
 
 ```.py
 revs = db.search(query=f"""
@@ -100,6 +112,7 @@ return render_template('movie_reddit.html', username=username, results=movies, u
 This line of code return ```render_template('movie_reddit.html', username=username, results=movies, user_id=user_id)``` uses the ```render_templat```e function from Flask to generate and return an HTML page. The ```render_template``` function takes the template file name, in this case ```'movie_reddit.html'```, and passes the provided variables to it: ```username``` (the currently logged-in user's name), ```results``` (a list of movies from the database), and ```user_id``` (the currently logged-in user's ID). This allows the template to dynamically display these variables stored in python file, such as the user's name, the list of movies, and user-specific actions. Using ```render_template``` helps separate the presentation logic (HTML) from the application logic (Python), making the code more maintainable and is benefitable for future develops. 
 
 Here is my first attempt of an use of Dynamic Rendering inside ```movie_reddit.html``` using the code above：
+To display the value of the ```r``` variable in the HTML signup file, I use template tags provided by the Jinja2 templating engine used by Flask. The most common template tag is {{ }}, which allows me to output the value of a variable. Here's an example of how I use template tags in my HTML files: 
 
 ```.py
 {% for r in results %}
@@ -114,13 +127,13 @@ Here is my first attempt of an use of Dynamic Rendering inside ```movie_reddit.h
 {% endfor %}
 ```
 
-This code is a Jinja2 template loop within an HTML table. It iterates over the ```results``` list, creating a table row ```(<tr>)``` for each item. Each ```<td>``` tag displays an element from the current item ```r``` in the ```results``` list, where ```r``` is expected to be a list or tuple.
+This code iterates over the ```results``` list, creating a table row ```(<tr>)``` for each item. Each ```<td>``` tag displays an element from the current item ```r``` in the ```results``` list, where ```r``` is expected to be a list or tuple.
 
 The ```{{ r[0] }}```, ```{{ r[1] }}```, ```{{ r[2] }}```, ```{{ r[3] }}```, and ```{{ r[4] }}``` are placeholders that will be replaced by the elements of r which is stored in python file.
 
 The last ```<td>``` contains a link styled as a button, which navigates to a page generated by the ```see_review``` route, passing the ```movie_id``` parameter as ```r[0]```. The ```{% endfor %}``` line ends the loop. This code dynamically generates table rows for each movie in the ```results``` list, displaying movie details and providing a link to view each movie's review.
 
-However, I realized that the code is repeated and not efficient, so I decided to use nested loop to iterate through the items and create the table rows dynamically. Here is the modified version of the code:
+However, I realized that the code is repeated and not efficient, so I decided to use **nested loop** to iterate through the items and create the table rows dynamically. Here is the modified version of the code:
 
 ```.py
 {% for row in results %}
@@ -156,15 +169,15 @@ My peer is very satisfied with the website, as detailed in Appendix 1 and Append
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 55 53 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/be290c05-58db-47e2-b748-f28108ca5ae1">
 
-##### _Appendix.1 Contact between developer and client for evaluation of website_
+##### _Figure.2 Contact between developer and client for evaluation of website_
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 56 27 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/5c23a7f1-cdcb-4d60-a2f6-1fd4e1a00813">
 
-##### _Appendix.2 Contact between developer and client for evaluation of website_
+##### _Figure.3 Contact between developer and client for evaluation of website_
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 56 13 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/d5995505-fa6a-4ff4-8bdd-d5c01fabcaf3">
 
-##### _Appendix.3 Contact between developer and client regarding beta testing and feedback_
+##### _Figure.4 Contact between developer and client regarding beta testing and feedback_
 
 
 [^1]: https://www.geeksforgeeks.org/how-to-use-flask-session-in-python-flask/
