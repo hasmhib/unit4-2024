@@ -4,31 +4,17 @@
 
 # Criteria C: Development (no more than 1000 words)
 
-## Existing Tools
-
-| Software/Development tools | Coding structure tools        | Libraries      |
-|----------------------------|-------------------------------|----------------|
-| PyCharm                    | ORM (Object Relation Mapping) | flask          |
-| Python                     | SQL requests                  | sqlite3        |
-| SQLite                     | Databases                     | passlib        |
-| Jinja2                     | Encryption                    | werkzeug.utils |
-|                            | For loops                     | os             |
-|                            | If-else statements            | datetime       |
-
-
-
 ## Technique Used
-1. Flask Library/Routes
 2. Python inside HTML
 3. CSS Styling
 4. For loops for showing posts
 5. if statements
 6. Password Hashing
 7. Token-based authentication
-8. Lists
+8. Lists and Dictionaries
 9. HTTP server
 10. POST, GET Request
-11. SQLite databases
+11. SQL Query
 
 
 ## Sources
@@ -95,7 +81,6 @@ These queries together provide a detailed profile page with all relevant user in
 
 
 ## SQL Query for Review likes
-
 
 
 ```.py
@@ -184,9 +169,7 @@ After some testing and feedbacks from my peers, I concluded that the following f
 
 1. Adding functionality on the 'Profile' page - Adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
 
-2. An confirmation dialog - An confirmation dialog can be added for when deleting posts to reduce the chance of users delating the post accidentaly.
-
-3. Sorting option "By most likes" - An option can be added to allow for filtering by most likes so the user can find most popular comments more easily.
+2. Sorting option "By most likes" - An option can be added to allow for filtering by most likes so the user can find most popular comments more easily.
 
 
 # Appendix
