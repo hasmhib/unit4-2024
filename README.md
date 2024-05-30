@@ -181,11 +181,11 @@ After some testing and feedbacks from my peers, I concluded that the following f
 
 # Work Cited
 
-https://blog.miguelgrinberg.com/post/ 
-the-flask-mega-tutorial-part-iv-database ---. “The Flask Mega-Tutorial, Part IV: Database.” Copyright (C) 2012-2024 Miguel Grinberg, blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database.
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database 
+---. “The Flask Mega-Tutorial, Part IV: Database.” Copyright (C) 2012-2024 Miguel Grinberg, blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database.
 
 https://www.w3schools.com/sql/ 
-SQL Tutorial. www.w3schools.com/sql.
+SQL Tutorial. 
 
 https://jinja.palletsprojects.com/en/3.1.x
 Jinja — Jinja Documentation (3.1.x). jinja.palletsprojects.com/en/3.1.x.
