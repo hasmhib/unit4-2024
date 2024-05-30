@@ -5,16 +5,16 @@
 # Criteria C: Development (no more than 1000 words)
 
 ## Technique Used
-2. Python inside HTML
-3. CSS Styling
-4. For loops for showing posts
-5. if statements
-6. Password Hashing
-7. Token-based authentication
-8. Lists and Dictionaries
-9. HTTP server
-10. POST, GET Request
-11. SQL Query
+1. Python inside HTML
+2. CSS Styling
+3. For loops for showing posts
+4. if statements
+5. Password Hashing
+6. Token-based authentication
+7. Lists and Dictionaries
+8. HTTP server
+9. POST, GET Request
+10. SQL Query
 
 
 ## Sources
