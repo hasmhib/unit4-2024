@@ -121,7 +121,7 @@ This code uses a **nested loop** to iterate through each ```row``` in ```results
 how easy someone else can expand further
 
 
-# Criteria E: Evaluation (Word count /500 words)
+# Criteria E: Evaluation 
 
 ## Functionality test from 2 users
 
