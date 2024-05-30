@@ -2,7 +2,7 @@
 
 
 
-# Criteria C: Development (no more than 1500 words)
+# Criteria C: Development (no more than 1000 words)
 
 ## Existing Tools
 
@@ -36,16 +36,16 @@
 ### Bootstrap 5 Documentation [^1]
 
 
-### W3Schools documentations for SQL [^2]
+### W3Schools documentations for SQLite [^2]
 
 
 ### Jinja — Jinja Documentation (3.1.x) [^3]
 
 
-### “Werkzeug.” PyPI [^4]
+### PyPI documentations for Werkzeug [^4]
 
 
-### Os — Miscellaneous Operating System Interfaces.” Python Documentation [^5]
+### Python Documentation for Os — Miscellaneous Operating System Interfaces [^5]
 
 
 
@@ -96,7 +96,7 @@ These queries together provide a detailed profile page with all relevant user in
 
 ## SQL Query for Review likes
 
-The 
+
 
 ```.py
 revs = db.search(query=f"""
@@ -169,14 +169,24 @@ This code uses **nested loop**, will iterate through each row in ```results```, 
 
 # Criteria E: Evaluation
 
-## Functionality test
+## Functionality test (2 users)
 
 
 ## Evaluation by Peers
-My peer is very satisfied with the website, as detailed in Appendix 1 and Appendix 2, confirming that it meets all the success criteria. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
+My peer is very satisfied with the website, as detailed in Figure 2 and Figure 3. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
 
 ## Evaluation of beta testing
+I received a feedback from the user and they are very satisfied with the website, as detailed in Figure 4. However, they suggested an area for improvement: add a confirmation dialog for when deleting posts as the user had accidentally deleted a few posts while testing. This will enables users to prevent data loss. 
 
+
+## Extensibility
+After some testing and feedbacks from my peers, I concluded that the following future extensions could be added:
+
+1. Adding functionality on the 'Profile' page - Adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
+
+2. An confirmation dialog - An confirmation dialog can be added for when deleting posts to reduce the chance of users delating the post accidentaly.
+
+3. Sorting option "By most likes" - An option can be added to allow for filtering by most likes so the user can find most popular comments more easily.
 
 
 # Appendix
