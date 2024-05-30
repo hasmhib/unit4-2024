@@ -19,25 +19,6 @@ DALL·E 2024-05-30 16.49.04 - A stylized, artistic depiction of a diverse group 
 11. Sanitations of user input
 
 
-## Sources
-
-### Miguel Grinberg's Flask Mega-Tutorial, Part IV on databases [^1]
-Miguel Grinberg's Flask Mega-Tutorial, Part IV on databases, was crucial for developing the database interactions in my application. It provided guidance on setting up and using a database with Flask, including creating models, establishing connections, and performing CRUD operations. I adapted and customized code snippets for handling user data, managing table relationships, and executing SQL queries from the tutorial to meet my application's needs. The tutorial also offered best practices for database design and query optimization, ensuring efficient and scalable interactions.
-
-### W3Schools documentations for SQLite [^2]
-The W3Schools SQL tutorial was helpful in understanding and implementing SQL queries for my application. It provided clear explanations and examples of CRUD operations, joins, and aggregate functions, which I adapted for handling user data, managing relationships, and counting records in my database.
-
-### Jinja — Jinja Documentation (3.1.x) [^3]
-The Jinja documentation was essential for understanding how to create dynamic HTML templates in my application. It provided clear guidance and examples on using template syntax, control structures, and template inheritance, which I used to build and customize the user interfaces in my project.
-
-### PyPI documentations for Werkzeug [^4]
-The Werkzeug documentation was instrumental in implementing secure filename handling and request/response management in my application. It provided clear examples and best practices that I adapted for securing file uploads and managing HTTP requests and responses effectively.
-
-### Python Documentation for Os — Miscellaneous Operating System Interfaces [^5]
-The Python os module documentation was crucial for handling file and directory operations in my application. It provided detailed information and examples on using functions like ```os.path.join``` , which I used to manage file paths and ensure the existence of directories.
-
-
-
 ## User profile picture
 I decided to allow users to be able to add a profile picture. The code below shows my attempt and I will explain in detail below:
 
@@ -54,7 +35,7 @@ def save_profile_pic(file):
 
 ```
 
-The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is done by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. The reason why I choose to use ```app.config``` is that it allows for centralized configuration management within the Flask application. By storing the allowed file extensions and the upload folder path in ```app.config```, it becomes easier to manage and modify these settings in one place throughout the application. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is crucial to prevent security issues that could arise from malicious filenames, such as those containing special characters. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles.
+The function ```save_profile_pic``` is designed to handle the upload and saving of user profile pictures securely. This function starts by checking if the file exists and if its filename is valid using the allowed_file function. The ```allowed_file``` function verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif', which are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. This validation is done by checking if there is a period in the filename and if the part after the last period matches one of the allowed extensions. The reason why I choose to use ```app.config``` is that it allows for centralized configuration management within the Flask application. By storing the allowed file extensions and the upload folder path in ```app.config```, it becomes easier to manage and modify these settings in one place throughout the application. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module. This step is crucial to prevent security issues that could arise from malicious filenames, such as those containing special characters. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file at this location. If the file is successfully saved, the function returns the filename. If the file is not valid or the saving process fails, the function returns None. This mechanism ensures that only valid image files are uploaded and saved securely, enhancing user experience by allowing them to personalize their profiles. 
 
 
 ## User profile information
@@ -80,10 +61,6 @@ The fourth query counts the number of likes received on the user's reviews by jo
 The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. 
 
 These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
-
-## ER diagram 
-
-The ER diagram in Fig. 2 illustrates the proposed GUI interface and navigation flow of the application. It showcases the interconnectivity between different screens, with directional arrows directs from interactive buttons to indicate the users through the app. For example, the 'Login' screen allows users to either create an account by pressing 'Signin' button or or utilize the 'Forgot Password?' option, which leads the users to resetting their password.
 
 
 ## SQL Query for Review likes
@@ -194,9 +171,9 @@ After some testing and feedbacks from my peers, I concluded that the following f
 
 
 
-[^1]: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
-[^2]: https://www.w3schools.com/sql/
-[^3]: https://jinja.palletsprojects.com/en/3.1.x
-[^4]: https://pypi.org/project/Werkzeug
-[^5]: https://docs.python.org/3/library/os.html
+[^1]: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database ---. “The Flask Mega-Tutorial, Part IV: Database.” Copyright (C) 2012-2024 Miguel Grinberg, blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database.
+[^2]: https://www.w3schools.com/sql/ SQL Tutorial. www.w3schools.com/sql.
+[^3]: https://jinja.palletsprojects.com/en/3.1.x Jinja — Jinja Documentation (3.1.x). jinja.palletsprojects.com/en/3.1.x.
+[^4]: https://pypi.org/project/Werkzeug “Werkzeug.” PyPI, 5 May 2024, pypi.org/project/Werkzeug.
+[^5]: https://docs.python.org/3/library/os.html “Os — Miscellaneous Operating System Interfaces.” Python Documentation, docs.python.org/3/library/os.html.
 
