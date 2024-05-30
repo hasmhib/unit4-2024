@@ -15,6 +15,7 @@
 8. HTTP server
 9. POST, GET Request
 10. SQL Query
+11. Sanitations of user input
 
 
 ## Sources
