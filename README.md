@@ -1,6 +1,7 @@
 # Unit 4: A mini Reddit
 
-
+<img width="max" alt="Screenshot 2024-05-30 at 4 50 32 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/60040ad3-732d-464f-a799-1287dd2e9a45">
+DALL·E 2024-05-30 16.49.04 - A stylized, artistic depiction of a diverse group of people sitting in a dimly lit movie theater, watching a movie on a large screen.webp
 
 # Criteria C: Development (no more than 1000 words)
 
