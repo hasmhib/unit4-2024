@@ -21,20 +21,20 @@ DALL·E 2024-05-30 16.49.04 - A stylized, artistic depiction of a diverse group 
 
 ## Sources
 
-### Bootstrap 5 Documentation [^1]
-
+### Miguel Grinberg's Flask Mega-Tutorial, Part IV on databases [^1]
+Miguel Grinberg's Flask Mega-Tutorial, Part IV on databases, was crucial for developing the database interactions in my application. It provided guidance on setting up and using a database with Flask, including creating models, establishing connections, and performing CRUD operations. I adapted and customized code snippets for handling user data, managing table relationships, and executing SQL queries from the tutorial to meet my application's needs. The tutorial also offered best practices for database design and query optimization, ensuring efficient and scalable interactions.
 
 ### W3Schools documentations for SQLite [^2]
-
+The W3Schools SQL tutorial was helpful in understanding and implementing SQL queries for my application. It provided clear explanations and examples of CRUD operations, joins, and aggregate functions, which I adapted for handling user data, managing relationships, and counting records in my database.
 
 ### Jinja — Jinja Documentation (3.1.x) [^3]
-
+The Jinja documentation was essential for understanding how to create dynamic HTML templates in my application. It provided clear guidance and examples on using template syntax, control structures, and template inheritance, which I used to build and customize the user interfaces in my project.
 
 ### PyPI documentations for Werkzeug [^4]
-
+The Werkzeug documentation was instrumental in implementing secure filename handling and request/response management in my application. It provided clear examples and best practices that I adapted for securing file uploads and managing HTTP requests and responses effectively.
 
 ### Python Documentation for Os — Miscellaneous Operating System Interfaces [^5]
-
+The Python os module documentation was crucial for handling file and directory operations in my application. It provided detailed information and examples on using functions like ```os.path.join``` , which I used to manage file paths and ensure the existence of directories.
 
 
 
