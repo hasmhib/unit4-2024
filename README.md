@@ -40,28 +40,13 @@ The function ```save_profile_pic``` is designed to handle the upload and saving 
 
 ## User profile information
 
-These SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain in detail. 
+The SQL Queries are used to fetch various information about a user from the database ```follows```, ```reviews```, and ```likes```, which will be displayed on the user's profile page. I will explain an example of the code in detail. 
 
 ```.py
-user = db.search(f"SELECT * FROM user WHERE id={user_id}", multiple=False)
-
-following = db.search(f"SELECT * FROM follows WHERE follower_id={current_user_id} AND followed_id={user_id}", multiple=False) is not None
-review_count = db.search(f"SELECT COUNT(*) FROM reviews WHERE user_id={user_id}", multiple=False)[0]
-
 like_count = db.search(f"""SELECT COUNT(*) FROM likes l JOIN reviews r ON l.review_id = r.id WHERE r.user_id={user_id}""", multiple=False)[0]
-
-follower_count = db.search(f"SELECT COUNT(*) FROM follows WHERE followed_id={user_id}", multiple=False)[0]
-following_count = db.search(f"SELECT COUNT(*) FROM follows WHERE follower_id={user_id}", multiple=False)[0]
 ```
 
-The first query retrieves all information about the user from the ```user``` table based on their ```user_id```, including details like the username, email, and profile picture. 
-The second query checks if the current user (the one logged in) is following the user whose profile is being viewed. This is done by looking for a record in the ```follows``` table where the ```follower_id``` is the current user's ID and the ```followed_id``` is the profile user's ID. If such a record exists, it means the current user is following the profile user.
-The third query counts the number of reviews posted by the user by selecting the count of rows in the ```reviews``` table where the ```user_id``` matches the profile user's ID. This is achieved using the ```COUNT(*)``` function, an built-in function in SQL that returns the number of rows that match the specified criteria. In this case, it returns the number of reviews that the user has posted. 
-The fourth query counts the number of likes received on the user's reviews by joining the ```likes``` and ```reviews``` tables. It selects the count of rows in the likes table where the ```review_id``` matches a review ID from the ```reviews``` table, which in turn matches the profile user's ID. The ```JOIN``` method is used to combine rows from two or more tables based on a related column between them.
-The fifth query counts how many users are following the profile user by selecting the count of rows in the ```follows``` table where the ```followed_id``` matches the profile user's ID. Similarly, the final query counts how many users the profile user is following by selecting the count of rows in the ```follows``` table where the ```follower_id``` matches the profile user's ID. 
-
-These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
-
+This code counts the number of likes received by a user's reviews. The ```db.search``` method executes a SQL query that uses ```COUNT(*)``` method to count up all the likes. The ```JOIN``` clause combines the ```likes``` and ```reviews``` tables based on the ```review_id``` column, ensuring each like is matched with its corresponding review. The ```WHERE``` clause filters the reviews to include only those by the specified user ```(user_id)```. The ```multiple=False``` parameter indicates a single result is expected, and ```[0]``` extracts the count from the result. This count is then stored in the ```like_count``` variable. This code will help in enhancing the user experience by showing numbers that reflect user interactions.
 
 ## SQL Query for Review likes
 
