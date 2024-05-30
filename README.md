@@ -80,6 +80,10 @@ The fifth query counts how many users are following the profile user by selectin
 
 These queries together provide a detailed profile page with all relevant user information, enhancing the user experience by showing their activities, interactions, and social metrics on the platform.
 
+## ER diagram 
+
+The ER diagram in Fig. 2 illustrates the proposed GUI interface and navigation flow of the application. It showcases the interconnectivity between different screens, with directional arrows directs from interactive buttons to indicate the users through the app. For example, the 'Login' screen allows users to either create an account by pressing 'Signin' button or or utilize the 'Forgot Password?' option, which leads the users to resetting their password.
+
 
 ## SQL Query for Review likes
 
@@ -159,10 +163,10 @@ how easy someone else can expand further
 
 
 ## Evaluation by Peers
-My peer is very satisfied with the website, especially... as detailed in Figure 2 and Figure 3. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
+My peer is very satisfied with the website, especially... as detailed in Figure 3 and Figure 4. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
 
 ## Evaluation of beta testing
-I received a feedback from the user and they are very satisfied with the website, as detailed in Figure 4. However, they suggested an area for improvement: add a confirmation dialog for when deleting posts as the user had accidentally deleted a few posts while testing. This will enables users to prevent data loss. 
+I received a feedback from the user and they are very satisfied with the website, as detailed in Figure 5. However, they suggested an area for improvement: add a confirmation dialog for when deleting posts as the user had accidentally deleted a few posts while testing. This will enables users to prevent data loss. 
 
 
 ## Extensibility
@@ -177,15 +181,15 @@ After some testing and feedbacks from my peers, I concluded that the following f
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 55 53 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/be290c05-58db-47e2-b748-f28108ca5ae1">
 
-##### _Figure.2 Contact between developer and client for evaluation of website_
+##### _Figure.3 Contact between developer and client for evaluation of website_
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 56 27 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/5c23a7f1-cdcb-4d60-a2f6-1fd4e1a00813">
 
-##### _Figure.3 Contact between developer and client for evaluation of website_
+##### _Figure.4 Contact between developer and client for evaluation of website_
 
 <img width="max" alt="Screenshot 2024-05-28 at 1 56 13 PM" src="https://github.com/hasmhib/unit4-2024/assets/142870448/d5995505-fa6a-4ff4-8bdd-d5c01fabcaf3">
 
-##### _Figure.4 Contact between developer and client regarding beta testing and feedback_
+##### _Figure.5 Contact between developer and client regarding beta testing and feedback_
 
 
 
