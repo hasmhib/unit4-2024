@@ -100,7 +100,7 @@ The SQL Query used to retrieve reviews for a specific movie, corresponding with 
 The query includes a subquery to check if the current user has liked each review. This subquery returns ```1``` if the current user liked the review; otherwise, it returns ```NULL```. This check is performed by selecting from the ```likes``` table where the ```review_id``` matches the review ID and the ```user_id``` matches the current user's ID. The query filters reviews by the specified movie ID using the ```WHERE``` clause and groups the results by the review ID using the ```GROUP BY``` clause to ensure correct aggregation of likes. This comprehensive view of movie reviews, including user engagement metrics, enhances the user experience by showing interactive and relevant content.
 
 
-## Dynamic Rendering with the Python inside HTML
+## Dynamic Rendering with Python inside HTML
 
 Here is the example of the Dynamic Rendering with python inside HTML by using ```render_template()``` method. This enables me to conbine python file and HTML file, which is more efficient. I will explain this code in detail. 
 
