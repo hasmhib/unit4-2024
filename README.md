@@ -150,7 +150,7 @@ This code uses **nested loop**, will iterate through each row in ```results```, 
 # Criteria D: Functionlaity
 
 ## Demonstration video
-
+how easy someone else can expand further
 
 # Criteria E: Evaluation
 
@@ -158,7 +158,7 @@ This code uses **nested loop**, will iterate through each row in ```results```, 
 
 
 ## Evaluation by Peers
-My peer is very satisfied with the website, as detailed in Figure 2 and Figure 3. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
+My peer is very satisfied with the website, especially... as detailed in Figure 2 and Figure 3. However, they suggested an area for improvement: adding functionality on the 'Profile' page that allows users to see lists of their followers and whom they are following. Implementing this feature could allow user engagement by making the social connections within the platform more visible and accessible.
 
 ## Evaluation of beta testing
 I received a feedback from the user and they are very satisfied with the website, as detailed in Figure 4. However, they suggested an area for improvement: add a confirmation dialog for when deleting posts as the user had accidentally deleted a few posts while testing. This will enables users to prevent data loss. 
