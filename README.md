@@ -179,19 +179,20 @@ After some testing and feedbacks from my peers, I concluded that the following f
 ##### _Figure.5 Contact between developer and client regarding beta testing and feedback_
 
 
+# Work Cited
 
-[^1]: https://blog.miguelgrinberg.com/post/ 
+https://blog.miguelgrinberg.com/post/ 
 the-flask-mega-tutorial-part-iv-database ---. “The Flask Mega-Tutorial, Part IV: Database.” Copyright (C) 2012-2024 Miguel Grinberg, blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database.
 
-[^2]: https://www.w3schools.com/sql/ 
+https://www.w3schools.com/sql/ 
 SQL Tutorial. www.w3schools.com/sql.
 
-[^3]: https://jinja.palletsprojects.com/en/3.1.x
+https://jinja.palletsprojects.com/en/3.1.x
 Jinja — Jinja Documentation (3.1.x). jinja.palletsprojects.com/en/3.1.x.
 
-[^4]: https://pypi.org/project/Werkzeug 
+https://pypi.org/project/Werkzeug 
 “Werkzeug.” PyPI, 5 May 2024, pypi.org/project/Werkzeug.
 
-[^5]: https://docs.python.org/3/library/os.html
+https://docs.python.org/3/library/os.html
 “Os — Miscellaneous Operating System Interfaces.” Python Documentation, docs.python.org/3/library/os.html.
 
