@@ -118,7 +118,9 @@ This code uses a **nested loop** to iterate through each ```row``` in ```results
 # Criteria D: Functionlaity
 
 ## Demonstration video
-how easy someone else can expand further
+Here is the video of the functionality test as well as highlighting the ease of use for future developers to expand upon it.
+
+https://drive.google.com/file/d/1Nr1C20sKp4H9QzbTCXGERGqoUqDqaZyG/view?usp=drive_link 
 
 
 # Criteria E: Evaluation 
