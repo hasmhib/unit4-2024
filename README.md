@@ -5,7 +5,7 @@
 ##### _Figure.1 DALL·E 2024-05-30 16.49.04 - A stylized, artistic depiction of a diverse group of people sitting in a dimly lit movie theater, watching a movie on a large screen.webp_
 
 
-# Criteria C: Development (Word count 983/1000 words)
+# Criteria C: Development (Word count 982/1000 words)
 
 ## Technique Used
 
@@ -20,11 +20,10 @@
 9. POST, GET Requests
 10. SQL Queries
 11. Sanitization of user input
-12. User profile pictures
 
 
 ## User profile picture
-I decided to allow users to add a profile picture. The code below shows my attempt and I will explain in detail:
+I decided to allow users to add a profile picture. The code below shows my attempt, and I will explain in detail:
 
 ```.py
 app.config['UPLOAD_FOLDER'] = 'static/profile_pics'
@@ -39,21 +38,21 @@ def save_profile_pic(file):
 
 ```
 
-The function ```save_profile_pic``` is designed to securely handle the upload and saving of user profile pictures. It starts by checking if the file exists and if its filename is valid using the ```allowed_file``` function, which verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif'. These extensions are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. The reason I chose to use ```app.config``` is that it allows for configuration management within the Flask application, making it easier to manage and modify settings in one place. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module to prevent security problems from malicious filenames. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is constructed using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file. If the file is successfully saved, the function returns the filename; otherwise, it returns ```None```. This ensures that only valid image files are uploaded and saved securely, enhancing the user experience by allowing them to personalize their profiles.
+The function ```save_profile_pic``` is designed to securely handle the upload and saving of user profile pictures. It starts by checking **if** the file exists and if its filename is valid using the ```allowed_file``` function, which verifies that the file has one of the permitted extensions like 'png', 'jpg', 'jpeg', or 'gif'. These extensions are defined in the application's configuration ```app.config['ALLOWED_EXTENSIONS']```. The reason I chose to use ```app.config``` is that it allows for configuration management within the Flask application, making it easier to manage and modify settings in one place. If the file passes this validation, the filename is sanitized using ```secure_filename``` from the ```werkzeug.utils``` module to prevent security problems from malicious filenames. The sanitized filename is then used to save the file to the server in the directory specified by ```app.config['UPLOAD_FOLDER']```. The path to the file is created using the ```os.path.join``` function from the ```os``` module, ensuring compatibility across different operating systems. The ```save``` method of the file object is then called to save the file. If the file is successfully saved, the function returns the filename, otherwise it returns ```None```. This ensures that only valid image files are uploaded and saved securely, enhancing the user experience by allowing them to personalize their profiles.
 
 
 ## User profile information retrieval
 
-The SQL queries are used to fetch various pieces of information about a user from the database, which will be displayed on the user's profile page. I will explain an example of the code in detail:
+The **SQL Queries** are used to fetch various information about a user from the database, which will be displayed on the user's profile page. I will explain an example of the code in detail:
 
 ```.py
 like_count = db.search(f"""SELECT COUNT(*) FROM likes l JOIN reviews r ON l.review_id = r.id WHERE r.user_id={user_id}""", multiple=False)[0]
 ```
 
-This code counts the number of likes received by a user's reviews. The ```db.search``` method executes a SQL query that uses the ```COUNT(*)``` method to sum the likes. The ```JOIN``` clause combines the ```likes``` and ```reviews``` tables based on the ```review_id``` column, ensuring each like matches with its corresponding review. The ```WHERE``` clause filters the reviews to include only the specified user ```(user_id)```. The ```multiple=False``` parameter specifies a single result is expected, and ```[0]``` extracts the count from the result. This count is stored in the ```like_count``` variable. This enhances the user experience by showing numbers that reflect user interactions.
+This code counts the number of likes received by a user's reviews. The ```db.search``` method executes a **SQL Query** that uses the ```COUNT(*)``` method to sum the likes. The ```JOIN``` clause combines the ```likes``` and ``reviews `` tables based on the ``review_id``` column, ensuring each like matches its corresponding review. The ```WHERE``` clause filters the reviews to include only the specified user ```(user_id)```. The ```multiple=False``` parameter means a single result is expected, and ```[0]``` extracts the count from the result. This count is stored in the ```like_count``` variable. This enhances the user experience by showing numbers that reflect user interactions. 
+
 
 ## SQL Query for Review likes
-
 
 ```.py
 revs = db.search(query=f"""
@@ -67,20 +66,20 @@ revs = db.search(query=f"""
 """, multiple=True)
 ```
 
-The SQL query gains reviews for a specific movie, showing the number of likes each review has received and whether the current user liked each review. The query selects columns from the ```reviews``` table, including review details not only the review ID, date, stars, comment, and movie ID, but also the user details like the user ID and username. The ```COUNT()``` method is used to count the number of likes each review has received. The ```JOIN``` clause combines rows from the ```reviews``` table with the ```user``` table to get the reviewer's username and with the ```likes``` table to count the likes.
+The **SQL Query** gains reviews for a specific movie, showing the number of likes each review has received and whether the current user liked each review. The query selects columns from the ```reviews``` table, including review details, not only the review ID, date, stars, comment, and movie ID but also the user details like the user ID and username. The ```COUNT()``` method counts the number of likes each review has received. The ```JOIN``` clause combines rows from the ```reviews``` table with the ```user``` table to get the reviewer's username and with the ```likes``` table to count the likes.
 
-The query includes a subquery to check if the current user has liked each review, returning ```1``` if the current user liked the review and ```NULL``` otherwise. This check is performed by selecting from the ```likes``` table where the ```review_id``` matches the review ID and the ```user_id``` matches the current user's ID. The query filters reviews by the specified movie ID using the ```WHERE``` clause and groups the results by the review ID using the ```GROUP BY``` clause to ensure correct likes. The user experience will be increased by viewing movie reviews, including user engagement insights.
+The query includes a **subquery** to check if the current user has liked each review, returning ```1``` if the current user liked the review and ```NULL``` otherwise. This check is performed by selecting from the ```likes``` table where the ```review_id``` matches the review ID and the ```user_id``` matches the current user's ID. The query filters reviews by the specified movie ID using the ```WHERE``` clause and groups the results by the review ID using the ```GROUP BY``` clause to ensure correct likes. The user experience will be increased by viewing movie reviews, including user engagement insights.
 
 
 ## Dynamic Rendering with Python inside HTML
 
-Here is an example of Dynamic Rendering with Python inside HTML using the ```render_template``` method, which enables interacting Python and HTML efficiently. I will explain this code in detail:
+Here is an example of Dynamic Rendering with Python inside HTML using the ```render_template``` method, which efficiently enables interaction between Python and HTML. I will explain this code in detail:
 
 ```.py
 return render_template('movie_reddit.html', username=username, results=movies, user_id=user_id)
 ```
 
-This line of code uses the ```render_template``` function from Flask. This is used to generate and return an HTML page. The function takes the template file name ```'movie_reddit.html'``` and passes the provided variables stored in Python: ```username``` (the logged-in user's name), ```results``` (a list of movies), and ```user_id``` (the user's ID). This allows the template to display these variables in HTML files, even though these are stored inside Python, such as the user's name, movie list, and specific user actions. Using ```render_template``` separates the presentation logic (HTML) from the application logic (Python), making the code more maintainable and beneficial for future development.
+This line of code uses the ```render_template``` function from Flask. This is used to generate and return an HTML page. The function takes the template file name ```'movie_reddit.html'``` and passes the provided variables stored in Python: ```username``` (the logged-in user's name), ```results``` (a list of movies), and ```user_id``` (the user's ID). This allows the display of these variables in HTML files, even though these are stored inside Python, such as the user's name, movie list, and specific user actions. Using ```render_template``` separates the presentation logic (HTML) from the application logic (Python), making the code more maintainable and beneficial for future development.
 
 Here is my first attempt at using dynamic rendering inside ```movie_reddit.html``` with the code above:
 
@@ -97,10 +96,10 @@ Here is my first attempt at using dynamic rendering inside ```movie_reddit.html`
 {% endfor %}
 ```
 
-This code iterates over the ```results``` list, creating a table row ```(<tr>)``` for each item. Each ```<td>``` tag displays an element from the current item ```r``` in the ```results``` list, where ```r``` is expected to be a list or tuple. The ```{{ r[0] }}```, ```{{ r[1] }}```, ```{{ r[2] }}```, ```{{ r[3] }}```, and ```{{ r[4] }}``` are placeholders that will be replaced by the elements of ```r``` stored in the Python file.
-The last ```<td>``` contains a link styled as a button, which directs to a page generated by the ```see_review``` route, passing the ```movie_id``` parameter as ```r[0]```. The ```{% endfor %}``` line ends the loop. The movie details and a link to view the reviews for each movie is displayed in table rows that this code created for every movie in the results list.
+This code uses **for loops**, which iterates over the ```results``` list, creating a table row ```(<tr>)``` for each item. Each ```<td>``` tag displays an element from the current item ```r``` in the ```results``` list, where ```r``` is expected to be a **list** or **tuple**. The ```{{ r[0] }}```, ```{{ r[1] }}```, ```{{ r[2] }}```, ```{{ r[3] }}```, and ```{{ r[4] }}``` are placeholders that will be replaced by the elements of ```r``` stored in the Python file.
+The last ```<td>``` contains a link styled as a button, which directs to a page generated by the ```see_review``` route, passing the ```movie_id``` parameter as ```r[0]```. The ```{% endfor %}``` line ends the **loop**. The movie details and a link to view the reviews for each movie are displayed in table rows that this code created for every movie in the results list.
 
-However, I realized that the code was repetitive and not efficient, so I decided to use a nested loop to iterate through the items and create the table rows dynamically. Here is the modified version of the code:
+However, I realized that the code was repetitive and inefficient, so I decided to use a **nested loop** to iterate through the items and create the table rows dynamically. Here is the modified version of the code:
 
 ```.py
 {% for row in results %}
@@ -112,7 +111,7 @@ However, I realized that the code was repetitive and not efficient, so I decided
 </tr>
 {% endfor %}
 ```
-This code uses a **nested loop** to iterate through each ```row``` in ```results```, and then for each ```row```, it iterates through each ```col``` (column) to create the table cells. The last column, which contains the "See" button, is added separately outside the inner loop.
+This code uses a **nested loop** to iterate through each ```row``` in ```results```, and then for each ```row```, it iterates through each ```col``` (column) to create the table cells. The last column containing the "See" button is added separately outside the inner loop.
 
 
 # Criteria D: Functionlaity
