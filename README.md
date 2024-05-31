@@ -49,7 +49,7 @@ The **SQL Queries** are used to fetch various information about a user from the 
 like_count = db.search(f"""SELECT COUNT(*) FROM likes l JOIN reviews r ON l.review_id = r.id WHERE r.user_id={user_id}""", multiple=False)[0]
 ```
 
-This code counts the number of likes received by a user's reviews. The ```db.search``` method executes a **SQL Query** that uses the ```COUNT(*)``` method to sum the likes. The ```JOIN``` clause combines the ```likes``` and ``reviews `` tables based on the ``review_id``` column, ensuring each like matches its corresponding review. The ```WHERE``` clause filters the reviews to include only the specified user ```(user_id)```. The ```multiple=False``` parameter means a single result is expected, and ```[0]``` extracts the count from the result. This count is stored in the ```like_count``` variable. This enhances the user experience by showing numbers that reflect user interactions. 
+This code counts the number of likes received by a user's reviews. The ```db.search``` method executes a **SQL Query** that uses the ```COUNT(*)``` method to sum the likes. The ```JOIN``` clause combines the ```likes``` and ```reviews ``` tables based on the ```review_id``` column, ensuring each like matches its corresponding review. The ```WHERE``` clause filters the reviews to include only the specified user ```(user_id)```. The ```multiple=False``` parameter means a single result is expected, and ```[0]``` extracts the count from the result. This count is stored in the ```like_count``` variable. This enhances the user experience by showing numbers that reflect user interactions. 
 
 
 ## SQL Query for Review likes
@@ -111,6 +111,7 @@ However, I realized that the code was repetitive and inefficient, so I decided t
 </tr>
 {% endfor %}
 ```
+
 This code uses a **nested loop** to iterate through each ```row``` in ```results```, and then for each ```row```, it iterates through each ```col``` (column) to create the table cells. The last column containing the "See" button is added separately outside the inner loop.
 
 
