@@ -4,8 +4,6 @@
 
 ## Code
 
-```py
+![image](https://github.com/user-attachments/assets/32abf638-5a11-404c-b100-8d2c5d660e7b)
 
-```
 
-## Proof of work
