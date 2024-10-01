@@ -4,7 +4,8 @@
 
 ## Trace Table
 
-![IMG_73F7859CC69D-1](https://github.com/user-attachments/assets/f2a83111-d3a1-4ebc-a3fb-95511f390dfd)
+![image](https://github.com/user-attachments/assets/9a0ce0d5-0838-4fd6-924e-473772322b55)
+
 
 ## Code
 
