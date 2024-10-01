@@ -4,6 +4,8 @@
 
 ## Trace Table
 
+![image](https://github.com/user-attachments/assets/a3e71811-8773-4de0-9ad2-6288bd2655b3)
+
 
 ## Code
 
