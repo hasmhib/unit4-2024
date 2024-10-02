@@ -6,18 +6,33 @@
 
 ### Class Queue
 ```.py
- class Queue:
+class Item:
     def __init__(self):
-        self.queue = deque()
+        self.data = None
 
-    def enqueue(self, item):
-        self.queue.append(item)
+    def get(self):
+        return self.data
+
+    def set(self, value):
+        self.data = value
+
+class Queue:
+    def __init__(self):
+        self.data = []
+
+    def isEmpty(self):
+        return len(self.data) == 0
+
+    def enqueue(self, value):
+        item = Item()
+        item.set(value)
+        self.data.append(item)
 
     def dequeue(self):
-        return self.queue.popleft()
+        output = self.data[0].get()
+        self.data = self.data[1:]
+        return output
 
-    def is_Empty(self):
-        return len(self.queue) == 0
 ```
 
 ### frequency_queue
